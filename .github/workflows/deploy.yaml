@@ -20,8 +20,8 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -f ./Dockerfile -t ghcr.io/${{ secrets.DOCKER_USERNAME }}/node-app:latest .
-          docker push ghcr.io/${{ secrets.DOCKER_USERNAME }}/node-app:latest
+          docker build -t ghcr.io/mason-p-ark/node-app:latest .
+          docker push ghcr.io/mason-p-ark/node-app:latest
 
   deploy:
     needs: build
@@ -30,7 +30,7 @@ jobs:
       - name: Checkout Kubernetes Manifests Repo
         uses: actions/checkout@v3
         with:
-          repository: Mason-P-ark/k8s-manifests
+          repository: <YOUR_GITHUB_USERNAME>/k8s-manifests
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update Kubernetes Deployment Image
