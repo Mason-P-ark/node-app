@@ -20,7 +20,7 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t ghcr.io/${{ secrets.DOCKER_USERNAME }}/node-app:latest .
+          docker build -f ./Dockerfile -t ghcr.io/${{ secrets.DOCKER_USERNAME }}/node-app:latest .
           docker push ghcr.io/${{ secrets.DOCKER_USERNAME }}/node-app:latest
 
   deploy:
